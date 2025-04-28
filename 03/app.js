@@ -10,11 +10,22 @@ class App extends React.Component {
     state = {
         cart: [],
     }
+
+    addToCart = (product) => {
+        this.setState(state => {
+            return {
+                cart: [...state.cart, product]
+            }
+            
+        }, () => {
+            console.log(this.state.cart);
+        }) 
+    }
     
     render() {
         return (
             <section>
-                <Category />
+                <Category addToCart={this.addToCart} data={data}/>
                 <Cart />
             </section>
         )
