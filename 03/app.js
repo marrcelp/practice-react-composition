@@ -17,8 +17,6 @@ class App extends React.Component {
                 cart: [...state.cart, product]
             }
             
-        }, () => {
-            console.log(this.state.cart);
         }) 
     }
 
@@ -28,8 +26,6 @@ class App extends React.Component {
             return {
                 cart: cartWithoutProduct
             }
-        },() => {
-            console.log(this.state.cart); 
         })
     }
     
