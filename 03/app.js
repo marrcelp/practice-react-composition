@@ -21,12 +21,23 @@ class App extends React.Component {
             console.log(this.state.cart);
         }) 
     }
+
+    removeFromCart = (product) => {
+        this.setState((state) => {
+            const cartWithoutProduct = state.cart.filter((item) => item.id !== product.id);
+            return {
+                cart: cartWithoutProduct
+            }
+        },() => {
+            console.log(this.state.cart); 
+        })
+    }
     
     render() {
         return (
             <section>
                 <Category addToCart={this.addToCart} data={data}/>
-                <Cart />
+                <Cart removeFromCart={this.removeFromCart} cart={this.state.cart}/>
             </section>
         )
     }
