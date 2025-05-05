@@ -22,10 +22,17 @@ class App extends React.Component {
 
     removeFromCart = (product) => {
         this.setState((state) => {
-            const cartWithoutProduct = state.cart.filter((item) => item.id !== product.id);
-            return {
-                cart: cartWithoutProduct
+            const indexToRemove = state.cart.findIndex((item) => item.id === product.id);
+
+            if (indexToRemove !== -1){
+                const newCart = [...state.cart];
+                newCart.splice(indexToRemove, 1);
+                return {
+                    cart: newCart
+                }
             }
+
+            return null;
         })
     }
     
